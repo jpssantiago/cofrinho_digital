@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '/providers/user_provider.dart';
 import '/widgets/custom_app_bar.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
+
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  @override
+  void initState() {
+    super.initState();
+    initialLoading();
+  }
+
+  void initialLoading() async {
+    UserProvider provider = Provider.of<UserProvider>(context, listen: false);
+    await provider.loadUser();
+
+    if (provider.userExists()) {
+      Navigator.of(context).pushNamedAndRemoveUntil('/main', (route) => false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
