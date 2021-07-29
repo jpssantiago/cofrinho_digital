@@ -20,4 +20,9 @@ class UserProvider extends ChangeNotifier {
 
     return _user != null;
   }
+
+  Future<void> deleteUser() async {
+    await DatabaseService.deleteUser();
+    _user = null;
+  }
 }

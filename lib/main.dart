@@ -7,6 +7,7 @@ import 'services/database_service.dart';
 import 'pages/welcome/welcome_page.dart';
 import 'pages/setup/setup_page.dart';
 import 'pages/main/main_page.dart';
+import 'pages/profile/profile_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
           '/welcome': (context) => const WelcomePage(),
           '/setup': (context) => const SetupPage(),
           '/main': (context) => const MainPage(),
+          '/profile': (context) => const ProfilePage(),
         },
         initialRoute: '/welcome',
         theme: _buildTheme(),
