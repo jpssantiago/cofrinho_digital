@@ -38,6 +38,6 @@ class MyApp extends StatelessWidget {
 
 ThemeData _buildTheme() {
   return ThemeData(
-    primaryColor: const Color(0xFF3C59FF),
+    primaryColor: const Color(0xFF3B59FF),
   );
 }
