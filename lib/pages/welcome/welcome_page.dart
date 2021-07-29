@@ -20,9 +20,9 @@ class _WelcomePageState extends State<WelcomePage> {
 
   void initialLoading() async {
     UserProvider provider = Provider.of<UserProvider>(context, listen: false);
-    await provider.loadUser();
+    bool loaded = await provider.loadUser();
 
-    if (provider.userExists()) {
+    if (loaded) {
       Navigator.of(context).pushNamedAndRemoveUntil('/main', (route) => false);
     }
   }

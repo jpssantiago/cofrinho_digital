@@ -36,7 +36,6 @@ class DatabaseService {
   }
 
   static Future<void> deleteUser() async {
-    final response = await _db?.delete('users');
-    print(response);
+    await _db?.delete('users');
   }
 }

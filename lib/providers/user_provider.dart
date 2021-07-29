@@ -15,16 +15,9 @@ class UserProvider extends ChangeNotifier {
     return true;
   }
 
-  Future<void> loadUser() async {
+  Future<bool> loadUser() async {
     _user = await DatabaseService.loadUser();
-  }
 
-  bool userExists() {
-    return user != null;
+    return _user != null;
   }
 }
-
-// TODO: Salvar isso aqui em um banco local.
-// return Future.delayed(const Duration(seconds: 2), () {
-//   return true;
-// });
