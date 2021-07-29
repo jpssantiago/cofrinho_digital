@@ -25,4 +25,11 @@ class UserProvider extends ChangeNotifier {
     await DatabaseService.deleteUser();
     _user = null;
   }
+
+  Future<void> updateUser(UserModel newUser) async {
+    _user = newUser;
+    await DatabaseService.updateUser(newUser);
+
+    notifyListeners();
+  }
 }

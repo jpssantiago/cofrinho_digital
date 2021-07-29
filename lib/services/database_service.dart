@@ -38,4 +38,13 @@ class DatabaseService {
   static Future<void> deleteUser() async {
     await _db?.delete('users');
   }
+
+  static Future<void> updateUser(UserModel newUser) async {
+    await _db?.update(
+      'users',
+      {
+        'name': newUser.name,
+      },
+    );
+  }
 }

@@ -9,16 +9,15 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserProvider provider = Provider.of<UserProvider>(
-      context,
-      listen: false,
-    );
-
-    return Scaffold(
-      appBar: _buildAppBar(context, provider),
-      body: Container(
-        color: Colors.white,
-      ),
+    return Consumer<UserProvider>(
+      builder: (context, provider, child) {
+        return Scaffold(
+          appBar: _buildAppBar(context, provider),
+          body: Container(
+            color: Colors.white,
+          ),
+        );
+      },
     );
   }
 }

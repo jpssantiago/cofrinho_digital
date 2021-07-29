@@ -8,6 +8,7 @@ import 'pages/welcome/welcome_page.dart';
 import 'pages/setup/setup_page.dart';
 import 'pages/main/main_page.dart';
 import 'pages/profile/profile_page.dart';
+import 'pages/edit_profile/edit_profile_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           '/setup': (context) => const SetupPage(),
           '/main': (context) => const MainPage(),
           '/profile': (context) => const ProfilePage(),
+          '/edit_profile': (context) => const EditProfilePage(),
         },
         initialRoute: '/welcome',
         theme: _buildTheme(),

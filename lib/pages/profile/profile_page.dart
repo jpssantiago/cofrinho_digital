@@ -8,9 +8,11 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<UserProvider>(context, listen: false);
+    void handleEditProfileTap() {
+      Navigator.of(context).pushNamed('/edit_profile');
+    }
 
-    void handleDeleteTap() {
+    void handleDeleteTap(UserProvider provider) {
       String title = 'Confirmação.';
       String content = 'Você tem certeza que deseja excluir a sua conta?';
       String content2 = 'Todos os seus dados serão perdidos.';
@@ -45,7 +47,7 @@ class ProfilePage extends StatelessWidget {
       );
     }
 
-    Widget _buildBackground() {
+    Widget _buildBackground(UserProvider provider) {
       Widget _buildImage() {
         return Container(
           width: 80,
@@ -101,7 +103,7 @@ class ProfilePage extends StatelessWidget {
       );
     }
 
-    Widget _buildListView() {
+    Widget _buildListView(UserProvider provider) {
       return Padding(
         padding: const EdgeInsets.only(
           left: 20,
@@ -123,14 +125,15 @@ class ProfilePage extends StatelessWidget {
           height: 55 * 2,
           child: ListView(
             children: [
-              const ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('Editar informações de perfil.'),
+              ListTile(
+                leading: const Icon(Icons.account_circle),
+                title: const Text('Editar informações de perfil.'),
+                onTap: handleEditProfileTap,
               ),
               ListTile(
                 leading: const Icon(Icons.delete),
                 title: const Text('Excluir conta.'),
-                onTap: handleDeleteTap,
+                onTap: () => handleDeleteTap(provider),
               ),
             ],
           ),
@@ -138,17 +141,21 @@ class ProfilePage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(elevation: 0),
-      body: Container(
-        color: Colors.white,
-        child: Stack(
-          children: [
-            _buildBackground(),
-            _buildListView(),
-          ],
-        ),
-      ),
+    return Consumer<UserProvider>(
+      builder: (context, provider, child) {
+        return Scaffold(
+          appBar: AppBar(elevation: 0),
+          body: Container(
+            color: Colors.white,
+            child: Stack(
+              children: [
+                _buildBackground(provider),
+                _buildListView(provider),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
