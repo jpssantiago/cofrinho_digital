@@ -29,6 +29,7 @@ class GoalList extends StatelessWidget {
       );
     }
 
+    // Trocar para => padding all: 10.
     Widget _buildEmptyListItem() {
       Widget _buildIcon() {
         return Container(
