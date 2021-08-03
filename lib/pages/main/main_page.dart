@@ -19,10 +19,10 @@ class MainPage extends StatelessWidget {
           body: Container(
             color: Colors.white,
             child: ListView(
-              children: const [
-                SavingsCard(savedMoney: 500),
-                SizedBox(height: 30),
-                GoalList(),
+              children: [
+                const SavingsCard(savedMoney: 500),
+                const SizedBox(height: 30),
+                GoalList(goals: provider.user!.goals),
               ],
             ),
           ),

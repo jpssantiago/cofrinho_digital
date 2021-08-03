@@ -8,7 +8,7 @@ class UserProvider extends ChangeNotifier {
   UserModel? get user => _user;
 
   Future<bool> createUser(String name) async {
-    UserModel newUser = UserModel(name: name);
+    UserModel newUser = UserModel(name: name, goals: []);
     _user = newUser;
 
     await DatabaseService.createUser(newUser);

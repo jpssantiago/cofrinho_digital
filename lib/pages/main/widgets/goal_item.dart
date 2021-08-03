@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '/models/goal_model.dart';
+
 const double itemWidth = 180;
 const double itemHeight = 122;
 
 class GoalItem extends StatelessWidget {
-  const GoalItem({Key? key}) : super(key: key);
+  final GoalModel goal;
+
+  const GoalItem({
+    Key? key,
+    required this.goal,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

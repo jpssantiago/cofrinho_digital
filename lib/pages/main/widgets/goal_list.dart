@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'goal_item.dart';
+import '/models/goal_model.dart';
 
 class GoalList extends StatelessWidget {
-  const GoalList({Key? key}) : super(key: key);
+  final List<GoalModel> goals;
+
+  const GoalList({
+    Key? key,
+    required this.goals,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<int> goals = [];
-
     void handleAddNewGoalTap() {
       //
     }
@@ -95,7 +99,9 @@ class GoalList extends StatelessWidget {
           padding: const EdgeInsets.only(left: 15, right: 15, bottom: 10),
           itemCount: goals.length,
           itemBuilder: (BuildContext context, int index) {
-            return const GoalItem();
+            return GoalItem(
+              goal: goals[index],
+            );
           },
         ),
       );
