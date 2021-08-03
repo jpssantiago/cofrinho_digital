@@ -46,36 +46,12 @@ class SavingsCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // _buildRow(),
             _buildTitle(),
             const SizedBox(height: 10),
             _buildValue(),
-            // const SizedBox(height: 10),
           ],
         ),
       ),
     );
   }
 }
-
-/*
-Widget _buildButton() {
-      return IconButton(
-        icon: const Icon(
-          Icons.more_vert,
-          color: Colors.white,
-        ),
-        onPressed: () {},
-      );
-    }
-
-    Widget _buildRow() {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildTitle(),
-          // _buildButton(),
-        ],
-      );
-    }
-*/
