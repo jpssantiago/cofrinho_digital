@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/providers/user_provider.dart';
+
 import 'widgets/app_bar.dart';
 import 'widgets/savings_card.dart';
+import 'widgets/goal_list.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -19,6 +21,8 @@ class MainPage extends StatelessWidget {
             child: ListView(
               children: const [
                 SavingsCard(savedMoney: 500),
+                SizedBox(height: 30),
+                GoalList(),
               ],
             ),
           ),
