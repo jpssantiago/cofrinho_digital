@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '/models/goal_model.dart';
+import '/utils/money_utils.dart';
 
 const double itemWidth = 180;
-const double itemHeight = 122;
+const double itemHeight = 130;
 
 class GoalItem extends StatelessWidget {
   final GoalModel goal;
@@ -71,18 +72,57 @@ class GoalItem extends StatelessWidget {
       );
     }
 
+    Widget _buildValue() {
+      return Text(
+        MoneyUtils.formatMoney(goal.value),
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).primaryColor,
+        ),
+      );
+    }
+
+    Widget _buildProgressIndicator() {
+      double getValue() {
+        return goal.value / goal.goal;
+      }
+
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(3),
+        child: LinearProgressIndicator(
+          value: getValue(),
+          minHeight: 10,
+          backgroundColor: const Color(0xFFE7E7E7),
+          valueColor: AlwaysStoppedAnimation(
+            Theme.of(context).primaryColor,
+          ),
+        ),
+      );
+    }
+
+    void handleTap() {
+      // TODO: Abrir detalhes do objetivo
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: Container(
-        width: itemWidth,
-        height: itemHeight,
-        decoration: _buildDecoration(),
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildHeaderRow(),
-          ],
+      child: GestureDetector(
+        onTap: handleTap,
+        child: Container(
+          width: itemWidth,
+          height: itemHeight,
+          decoration: _buildDecoration(),
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildHeaderRow(),
+              _buildValue(),
+              _buildProgressIndicator(),
+            ],
+          ),
         ),
       ),
     );

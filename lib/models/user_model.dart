@@ -15,7 +15,12 @@ class UserModel {
     return UserModel(
       name: map['name'],
       goals: [
-        GoalModel(title: 'Viajem as Bahamas', icon: Icons.ac_unit),
+        GoalModel(
+          title: 'Viajem as Bahamas',
+          icon: Icons.ac_unit,
+          goal: 5000,
+          value: 500,
+        ),
       ],
     );
   }

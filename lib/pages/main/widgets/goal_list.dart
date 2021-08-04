@@ -79,10 +79,9 @@ class GoalList extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildIcon(),
-                  const SizedBox(height: 20),
                   _buildText(),
                 ],
               ),

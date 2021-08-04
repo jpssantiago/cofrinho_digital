@@ -24,7 +24,7 @@ class SavingsCard extends StatelessWidget {
 
     Widget _buildValue() {
       return Text(
-        MoneyUtils().formatMoney(savedMoney),
+        MoneyUtils.formatMoney(savedMoney),
         style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
