@@ -60,7 +60,7 @@ class SelectGoalTypePage extends StatelessWidget {
       }
 
       void handleTap() {
-        // TODO: Abrir página de edição de nome e emoji
+        Navigator.of(context).pushNamed('/goal_name', arguments: category);
       }
 
       return GestureDetector(
