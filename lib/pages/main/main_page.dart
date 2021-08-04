@@ -12,6 +12,10 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void handleTap() {
+      Navigator.of(context).pushNamed('/select_goal_type');
+    }
+
     return Consumer<UserProvider>(
       builder: (context, provider, child) {
         return Scaffold(
@@ -25,6 +29,11 @@ class MainPage extends StatelessWidget {
                 GoalList(goals: provider.user!.goals),
               ],
             ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: handleTap,
+            backgroundColor: Theme.of(context).primaryColor,
           ),
         );
       },
