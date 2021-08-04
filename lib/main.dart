@@ -11,6 +11,7 @@ import 'pages/profile/profile_page.dart';
 import 'pages/edit_profile/edit_profile_page.dart';
 import 'pages/add_goal/select_goal_type_page.dart';
 import 'pages/add_goal/goal_name_page.dart';
+import 'pages/add_goal/goal_details_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           '/edit_profile': (context) => const EditProfilePage(),
           '/select_goal_type': (context) => const SelectGoalTypePage(),
           '/goal_name': (context) => const GoalNamePage(),
+          '/goal_details': (context) => const GoalDetailsPage(),
         },
         initialRoute: '/welcome',
         theme: _buildTheme(),

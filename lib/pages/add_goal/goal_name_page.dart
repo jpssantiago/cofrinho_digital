@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/widgets/custom_app_bar.dart';
 import '/models/goal_category_model.dart';
+import '/utils/snackbar_utils.dart';
 
 class GoalNamePage extends StatelessWidget {
   const GoalNamePage({Key? key}) : super(key: key);
@@ -72,10 +73,19 @@ class GoalNamePage extends StatelessWidget {
       void handleSubmit() {
         String name = _controller.text;
         if (name.trim().isEmpty) {
-          return; // TODO: Alertar que não pode ser vázio.
+          SnackbarUtils.showMessage(
+            context: context,
+            message: 'O nome do objetivo não pode ser vazio.',
+          );
+          return;
         }
 
-        // TODO: Redirecionar para a etapa final.
+        category.name = name;
+
+        Navigator.of(context).pushNamed(
+          '/goal_details',
+          arguments: category,
+        );
       }
 
       return Padding(
