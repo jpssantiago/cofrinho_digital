@@ -30,27 +30,28 @@ class GoalItem extends StatelessWidget {
       );
     }
 
-    Widget _buildIcon() {
+    Widget _buildEmoji() {
       return Container(
         width: 36,
         height: 36,
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          border: Border.all(color: Theme.of(context).primaryColor),
           shape: BoxShape.circle,
         ),
         child: Center(
-          child: Icon(
-            goal.icon,
-            color: Colors.white,
+          child: Text(
+            goal.emoji,
+            style: const TextStyle(fontSize: 20),
           ),
         ),
       );
     }
 
     Widget _buildTitle() {
-      return SizedBox(
+      return Container(
         width: itemWidth - 20 - 36 - 10, // Padding - Tamanho icon - SizedBox.
         height: 36,
+        alignment: AlignmentDirectional.centerStart,
         child: Text(
           goal.title,
           overflow: TextOverflow.ellipsis,
@@ -65,7 +66,7 @@ class GoalItem extends StatelessWidget {
     Widget _buildHeaderRow() {
       return Row(
         children: [
-          _buildIcon(),
+          _buildEmoji(),
           const SizedBox(width: 10),
           _buildTitle(),
         ],

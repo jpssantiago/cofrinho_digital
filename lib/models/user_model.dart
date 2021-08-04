@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '/models/goal_model.dart';
 
 class UserModel {
@@ -26,14 +24,14 @@ class UserModel {
       name: map['name'],
       goals: [
         GoalModel(
-          title: 'Computador novo',
-          icon: Icons.ac_unit,
+          title: 'Celular novo',
+          emoji: '📱',
           goal: 5000,
           saved: 300,
         ),
         GoalModel(
           title: 'Viajem as Bahamas',
-          icon: Icons.ac_unit,
+          emoji: '✈️',
           goal: 12000,
           saved: 3201,
         ),
