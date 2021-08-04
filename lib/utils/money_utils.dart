@@ -1,5 +1,8 @@
+import 'package:intl/intl.dart';
+
 class MoneyUtils {
   static String formatMoney(double value) {
-    return 'R\$ $value';
+    NumberFormat format = NumberFormat('#,###,###.00', 'pt_BR');
+    return format.format(value);
   }
 }

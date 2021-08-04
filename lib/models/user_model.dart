@@ -11,15 +11,31 @@ class UserModel {
     required this.goals,
   });
 
+  double getTotalSaved() {
+    double saved = 0;
+
+    for (GoalModel goal in goals) {
+      saved += goal.saved;
+    }
+
+    return saved;
+  }
+
   static UserModel fromMap(Map<String, dynamic> map) {
     return UserModel(
       name: map['name'],
       goals: [
         GoalModel(
-          title: 'Viajem as Bahamas',
+          title: 'Computador novo',
           icon: Icons.ac_unit,
           goal: 5000,
-          value: 500,
+          saved: 300,
+        ),
+        GoalModel(
+          title: 'Viajem as Bahamas',
+          icon: Icons.ac_unit,
+          goal: 12000,
+          saved: 3201,
         ),
       ],
     );

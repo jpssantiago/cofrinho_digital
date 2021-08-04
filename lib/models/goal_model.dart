@@ -4,12 +4,12 @@ class GoalModel {
   String title;
   IconData icon;
   double goal;
-  double value;
+  double saved;
 
   GoalModel({
     required this.title,
     required this.icon,
     required this.goal,
-    required this.value,
+    required this.saved,
   });
 }

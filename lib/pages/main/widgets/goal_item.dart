@@ -74,7 +74,7 @@ class GoalItem extends StatelessWidget {
 
     Widget _buildValue() {
       return Text(
-        MoneyUtils.formatMoney(goal.value),
+        MoneyUtils.formatMoney(goal.saved),
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class GoalItem extends StatelessWidget {
 
     Widget _buildProgressIndicator() {
       double getValue() {
-        return goal.value / goal.goal;
+        return goal.saved / goal.goal;
       }
 
       return ClipRRect(
