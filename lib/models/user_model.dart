@@ -27,13 +27,17 @@ class UserModel {
           title: 'Celular novo',
           emoji: '📱',
           goal: 5000,
-          saved: 300,
+          saved: 500,
+          monthlyValue: 500,
+          months: 10,
         ),
         GoalModel(
           title: 'Viajem as Bahamas',
           emoji: '✈️',
           goal: 12000,
           saved: 3201,
+          months: 12,
+          monthlyValue: 1000,
         ),
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '/models/user_model.dart';
+import '/models/goal_model.dart';
 import '/services/database_service.dart';
 
 class UserProvider extends ChangeNotifier {
@@ -29,6 +30,12 @@ class UserProvider extends ChangeNotifier {
   Future<void> updateUser(UserModel newUser) async {
     _user = newUser;
     await DatabaseService.updateUser(newUser);
+
+    notifyListeners();
+  }
+
+  void addGoal(GoalModel goal) {
+    _user!.goals.add(goal);
 
     notifyListeners();
   }
