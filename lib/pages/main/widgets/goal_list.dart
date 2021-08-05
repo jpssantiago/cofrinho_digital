@@ -14,7 +14,7 @@ class GoalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void handleAddNewGoalTap() {
-      //
+      Navigator.of(context).pushNamed('/select_goal_type');
     }
 
     Widget _buildTitle() {

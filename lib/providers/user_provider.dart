@@ -34,8 +34,11 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addGoal(GoalModel goal) {
-    _user!.goals.add(goal);
+  // TODO: Salvar isso aq no local storage.
+  Future<void> addGoal(GoalModel goal) async {
+    await Future.delayed(const Duration(seconds: 2), () {
+      _user!.goals.add(goal);
+    });
 
     notifyListeners();
   }
