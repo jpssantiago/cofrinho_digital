@@ -1,6 +1,7 @@
 import 'package:cofrinho_digital/models/goal_category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 import '/widgets/custom_app_bar.dart';
 import 'widgets/goal_value_section.dart';
@@ -78,14 +79,17 @@ class _GoalDetailsPageState extends State<GoalDetailsPage> {
 
       setLoading(true);
 
-      await provider.addGoal(GoalModel(
-        title: category.name,
-        emoji: category.emoji,
-        goal: goalValue,
-        saved: 0,
-        months: months,
-        monthlyValue: monthlyValue,
-      ));
+      await provider.addGoal(
+        GoalModel(
+          id: const Uuid().v4(),
+          title: category.name,
+          emoji: category.emoji,
+          goal: goalValue,
+          saved: 0,
+          months: months,
+          monthlyValue: monthlyValue,
+        ),
+      );
 
       Navigator.of(context).pushNamedAndRemoveUntil(
         '/main',

@@ -1,4 +1,5 @@
 class GoalModel {
+  String id;
   String title;
   String emoji;
   double goal;
@@ -7,6 +8,7 @@ class GoalModel {
   double monthlyValue;
 
   GoalModel({
+    required this.id,
     required this.title,
     required this.emoji,
     required this.goal,
@@ -28,6 +30,7 @@ class GoalModel {
 
   static GoalModel fromMap(Map<String, dynamic> map) {
     return GoalModel(
+      id: map['id'],
       title: map['title'],
       emoji: map['emoji'],
       goal: map['goal'],

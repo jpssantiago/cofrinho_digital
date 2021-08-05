@@ -40,4 +40,11 @@ class UserProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<void> deleteGoal(GoalModel goal) async {
+    _user!.goals.remove(goal);
+    await DatabaseService.deleteGoal(goal);
+
+    notifyListeners();
+  }
 }

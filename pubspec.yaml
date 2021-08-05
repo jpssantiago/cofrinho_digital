@@ -39,6 +39,7 @@ dependencies:
   path: ^1.8.0
   intl: ^0.17.0
   extended_masked_text: ^2.2.1
+  uuid: ^3.0.4
 
 dev_dependencies:
   flutter_test:

@@ -15,7 +15,7 @@ class DatabaseService {
           'CREATE TABLE users(name TEXT PRIMARY KEY)',
         );
         db.execute(
-          'CREATE TABLE goals(title TEXT, emoji TEXT, goal REAL, saved REAL, months INTEGER, monthlyValue REAL)',
+          'CREATE TABLE goals(id TEXT PRIMARY KEY, title TEXT, emoji TEXT, goal REAL, saved REAL, months INTEGER, monthlyValue REAL)',
         );
         return;
       },
@@ -76,5 +76,9 @@ class DatabaseService {
     }
 
     return goals;
+  }
+
+  static Future<void> deleteGoal(GoalModel goal) async {
+    await _db?.delete('goals', where: 'id = ?', whereArgs: [goal.id]);
   }
 }
