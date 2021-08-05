@@ -20,7 +20,8 @@ class GoalDetailsPage extends StatefulWidget {
 
 class _GoalDetailsPageState extends State<GoalDetailsPage> {
   double goalValue = 0;
-  int months = 0;
+  int months =
+      0; // TODO: Adicionar opção de escolher dias ou semanas (não só meses).
   double monthlyValue = 0;
   bool loading = false;
 

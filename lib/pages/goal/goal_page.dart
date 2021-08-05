@@ -1,3 +1,4 @@
+import 'package:cofrinho_digital/utils/alert_utils.dart';
 import 'package:cofrinho_digital/utils/snackbar_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,14 +35,27 @@ class GoalPage extends StatelessWidget {
             style: TextStyle(color: Colors.red),
           ),
           onTap: () {
-            Navigator.of(context).pop();
+            Future.delayed(const Duration(seconds: 0), () {
+              AlertUtils.showDefaultAlert(
+                context: context,
+                title: 'Confirmar',
+                message: 'Tem certeza que deseja deletar este objetivo?',
+                acceptButtonText: 'Deletar',
+                onAccept: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/main',
+                    (route) => false,
+                  );
 
-            provider.deleteGoal(goal);
+                  provider.deleteGoal(goal);
 
-            SnackbarUtils.showMessage(
-              context: context,
-              message: 'Objetivo deletado com sucesso.',
-            );
+                  SnackbarUtils.showMessage(
+                    context: context,
+                    message: 'Objetivo deletado com sucesso.',
+                  );
+                },
+              );
+            });
           },
         );
       }
