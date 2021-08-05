@@ -19,6 +19,7 @@ class GoalModel {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'title': title,
       'emoji': emoji,
       'goal': goal,
