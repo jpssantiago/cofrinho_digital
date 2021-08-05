@@ -29,16 +29,14 @@ class UserProvider extends ChangeNotifier {
 
   Future<void> updateUser(UserModel newUser) async {
     _user = newUser;
-    await DatabaseService.updateUser(newUser);
+    await DatabaseService.saveUser(newUser);
 
     notifyListeners();
   }
 
-  // TODO: Salvar isso aq no local storage.
   Future<void> addGoal(GoalModel goal) async {
-    await Future.delayed(const Duration(seconds: 2), () {
-      _user!.goals.add(goal);
-    });
+    _user!.goals.add(goal);
+    await DatabaseService.addGoal(goal);
 
     notifyListeners();
   }

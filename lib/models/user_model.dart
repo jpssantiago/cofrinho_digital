@@ -19,11 +19,22 @@ class UserModel {
     return saved;
   }
 
-  static UserModel fromMap(Map<String, dynamic> map) {
+  static UserModel fromMap(Map<String, dynamic> map, List<GoalModel> goals) {
     return UserModel(
       name: map['name'],
-      goals: [
-        // GoalModel(
+      goals: goals,
+    );
+  }
+
+  static Map<String, dynamic> toMap(UserModel user) {
+    return {
+      'name': user.name,
+    };
+  }
+}
+
+/*
+// GoalModel(
         //   title: 'Celular novo',
         //   emoji: '📱',
         //   goal: 5000,
@@ -39,13 +50,4 @@ class UserModel {
         //   months: 12,
         //   monthlyValue: 1000,
         // ),
-      ],
-    );
-  }
-
-  static Map<String, dynamic> toMap(UserModel user) {
-    return {
-      'name': user.name,
-    };
-  }
-}
+*/

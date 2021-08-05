@@ -2,6 +2,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '/models/user_model.dart';
+import '/models/goal_model.dart';
 
 class DatabaseService {
   static Database? _db;
@@ -10,9 +11,13 @@ class DatabaseService {
     _db = await openDatabase(
       join(await getDatabasesPath(), 'cofrinho_digital.db'),
       onCreate: (db, version) {
-        return db.execute(
+        db.execute(
           'CREATE TABLE users(name TEXT PRIMARY KEY)',
         );
+        db.execute(
+          'CREATE TABLE goals(title TEXT, emoji TEXT, goal REAL, saved REAL, months INTEGER, monthlyValue REAL)',
+        );
+        return;
       },
       version: 1,
     );
@@ -29,7 +34,11 @@ class DatabaseService {
     final response = await _db?.query('users');
 
     if (response != null && response.isNotEmpty) {
-      return UserModel.fromMap(response[0]);
+      List<GoalModel> goals = await loadGoals();
+      return UserModel.fromMap(
+        response[0],
+        goals,
+      );
     }
 
     return null;
@@ -37,14 +46,35 @@ class DatabaseService {
 
   static Future<void> deleteUser() async {
     await _db?.delete('users');
+    await _db?.delete('goals');
   }
 
-  static Future<void> updateUser(UserModel newUser) async {
+  static Future<void> saveUser(UserModel newUser) async {
     await _db?.update(
       'users',
       {
         'name': newUser.name,
       },
     );
+  }
+
+  static Future<void> addGoal(GoalModel goal) async {
+    await _db?.insert(
+      'goals',
+      goal.toMap(),
+    );
+  }
+
+  static Future<List<GoalModel>> loadGoals() async {
+    List<GoalModel> goals = [];
+
+    final response = await _db?.query('goals');
+    if (response != null) {
+      for (var item in response) {
+        goals.add(GoalModel.fromMap(item));
+      }
+    }
+
+    return goals;
   }
 }
