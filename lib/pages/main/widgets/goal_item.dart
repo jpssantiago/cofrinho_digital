@@ -103,7 +103,7 @@ class GoalItem extends StatelessWidget {
     }
 
     void handleTap() {
-      // TODO: Abrir detalhes do objetivo
+      Navigator.of(context).pushNamed('/goal', arguments: goal);
     }
 
     return Padding(
