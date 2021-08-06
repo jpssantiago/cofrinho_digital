@@ -47,4 +47,20 @@ class UserProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  bool hasCompletedMonth(GoalModel goal, int index) {
+    return goal.completedMonths.contains(index);
+  }
+
+  void toggleCompletedMonth(GoalModel goal, int index) {
+    if (hasCompletedMonth(goal, index)) {
+      goal.completedMonths.remove(index);
+      goal.saved -= goal.monthlyValue;
+    } else {
+      goal.completedMonths.add(index);
+      goal.saved += goal.monthlyValue;
+    }
+
+    notifyListeners();
+  }
 }

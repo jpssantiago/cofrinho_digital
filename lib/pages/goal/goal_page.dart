@@ -1,11 +1,11 @@
-import 'package:cofrinho_digital/utils/alert_utils.dart';
-import 'package:cofrinho_digital/utils/snackbar_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/models/goal_model.dart';
 import '/widgets/custom_app_bar.dart';
 import '/providers/user_provider.dart';
+import '/utils/alert_utils.dart';
+import '/utils/snackbar_utils.dart';
 
 import 'widgets/header_section.dart';
 import 'widgets/month_section.dart';
@@ -17,17 +17,8 @@ class GoalPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments;
     final GoalModel goal = args as GoalModel;
-    final provider = Provider.of<UserProvider>(context, listen: false);
 
-    // TODO: Adicionar lista de opções no botão na appbar.
-    AppBar _buildAppBar() {
-      PopupMenuItem _buildEditOption() {
-        return PopupMenuItem(
-          child: const Text('Editar'),
-          onTap: () {},
-        );
-      }
-
+    AppBar _buildAppBar(UserProvider provider) {
       PopupMenuItem _buildDeleteOption() {
         return PopupMenuItem(
           child: const Text(
@@ -70,7 +61,6 @@ class GoalPage extends StatelessWidget {
             ),
             itemBuilder: (BuildContext context) {
               return [
-                _buildEditOption(),
                 _buildDeleteOption(),
               ];
             },
@@ -79,19 +69,23 @@ class GoalPage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
-        child: ListView(
-          children: [
-            HeaderSection(goal: goal),
-            MonthSection(goal: goal),
-          ],
-        ),
-      ),
+    return Consumer<UserProvider>(
+      builder: (context, provider, child) {
+        return Scaffold(
+          appBar: _buildAppBar(provider),
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.white,
+            child: ListView(
+              children: [
+                HeaderSection(goal: goal),
+                MonthSection(goal: goal),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

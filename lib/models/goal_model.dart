@@ -5,6 +5,7 @@ class GoalModel {
   double goal;
   double saved;
   int months;
+  List<int> completedMonths;
   double monthlyValue;
 
   GoalModel({
@@ -14,6 +15,7 @@ class GoalModel {
     required this.goal,
     required this.saved,
     required this.months,
+    required this.completedMonths,
     required this.monthlyValue,
   });
 
@@ -29,6 +31,10 @@ class GoalModel {
     };
   }
 
+  static List<int> monthsFromJson(var json) {
+    return [];
+  }
+
   static GoalModel fromMap(Map<String, dynamic> map) {
     return GoalModel(
       id: map['id'],
@@ -37,6 +43,7 @@ class GoalModel {
       goal: map['goal'],
       saved: map['saved'],
       months: map['months'],
+      completedMonths: monthsFromJson(''),
       monthlyValue: map['monthlyValue'],
     );
   }

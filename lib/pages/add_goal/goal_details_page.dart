@@ -88,6 +88,7 @@ class _GoalDetailsPageState extends State<GoalDetailsPage> {
           goal: goalValue,
           saved: 0,
           months: months,
+          completedMonths: [],
           monthlyValue: monthlyValue,
         ),
       );

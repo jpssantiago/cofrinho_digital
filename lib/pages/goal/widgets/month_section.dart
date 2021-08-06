@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:cofrinho_digital/models/goal_model.dart';
+import '/models/goal_model.dart';
+import '/providers/user_provider.dart';
 
 import 'month_item.dart';
 
@@ -14,19 +16,21 @@ class MonthSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _buildChildren() {
+    List<Widget> _buildChildren(UserProvider provider) {
       List<Widget> list = [];
 
       for (int i = 0; i < goal.months; i++) {
         // TODO: Marcar como concluído ou não concluído os meses.
-        bool completed = false;
+        bool completed = provider.hasCompletedMonth(goal, i);
 
         list.add(
           MonthItem(
             index: i,
             value: goal.monthlyValue,
             completed: completed,
-            onTap: (int index) {},
+            onTap: (int index) {
+              provider.toggleCompletedMonth(goal, index);
+            },
           ),
         );
       }
@@ -34,11 +38,15 @@ class MonthSection extends StatelessWidget {
       return list;
     }
 
-    return Padding(
-      padding: const EdgeInsets.only(top: 20),
-      child: Column(
-        children: _buildChildren(),
-      ),
+    return Consumer<UserProvider>(
+      builder: (context, provider, child) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Column(
+            children: _buildChildren(provider),
+          ),
+        );
+      },
     );
   }
 }
