@@ -1,9 +1,9 @@
-import 'package:cofrinho_digital/utils/snackbar_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '/models/goal_model.dart';
 import '/providers/user_provider.dart';
+import '/utils/snackbar_utils.dart';
 
 import 'month_item.dart';
 

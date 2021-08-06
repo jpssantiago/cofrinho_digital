@@ -82,12 +82,15 @@ class HeaderSection extends StatelessWidget {
     }
 
     Widget _buildDescription() {
-      int remainingMonths = goal.months; // calculate this shit.
+      int remainingMonths = goal.months - goal.completedMonths.length;
+      String defaultText =
+          '$remainingMonths meses restantes - ${MoneyUtils.formatMoney(goal.monthlyValue)} por mês';
+      String completedText = 'Parabéns, você completou este objetivo!';
 
       return Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Text(
-          '$remainingMonths meses restantes - ${MoneyUtils.formatMoney(goal.monthlyValue)} por mês',
+          remainingMonths == 0 ? completedText : defaultText,
           style: const TextStyle(
             fontSize: 16,
             color: Color(0xFF525252),

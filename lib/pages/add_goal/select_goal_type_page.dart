@@ -9,7 +9,7 @@ class SelectGoalTypePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double itemWidth = 100;
-    double itemHeight = 80 + 10 + 20;
+    double itemHeight = 80 + 20 + 20;
 
     final List<GoalCategoryModel> _categories = [
       GoalCategoryModel(name: 'Reserva de emergência', emoji: '💰'),

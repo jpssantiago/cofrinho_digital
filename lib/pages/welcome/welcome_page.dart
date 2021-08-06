@@ -12,6 +12,14 @@ class WelcomePage extends StatefulWidget {
 }
 
 class _WelcomePageState extends State<WelcomePage> {
+  bool loading = true;
+
+  void setLoading(bool value) {
+    setState(() {
+      loading = value;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -19,12 +27,16 @@ class _WelcomePageState extends State<WelcomePage> {
   }
 
   void initialLoading() async {
+    setLoading(true);
+
     UserProvider provider = Provider.of<UserProvider>(context, listen: false);
     bool loaded = await provider.loadUser();
 
     if (loaded) {
       Navigator.of(context).pushNamedAndRemoveUntil('/main', (route) => false);
     }
+
+    setLoading(false);
   }
 
   @override
@@ -36,7 +48,7 @@ A parte dos calculos e estatísticas fica com a gente, a sua única tarefa é po
 
     Widget _buildImage() {
       return SizedBox(
-        height: 384,
+        height: MediaQuery.of(context).size.height * .4,
         child: Image.asset('assets/images/welcome.png'),
       );
     }
@@ -100,23 +112,37 @@ A parte dos calculos e estatísticas fica com a gente, a sua única tarefa é po
       );
     }
 
+    Widget _buildContent() {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildImage(),
+          const SizedBox(height: 30),
+          _buildTitle(),
+          const SizedBox(height: 15),
+          _buildText(),
+          const Spacer(),
+          _buildButton(),
+          const SizedBox(height: 40),
+        ],
+      );
+    }
+
+    Widget _buildLoading() {
+      return const Center(
+        child: SizedBox(
+          width: 36,
+          height: 36,
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: CustomAppBar.buildWhiteAppBar(),
       body: Container(
         color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildImage(),
-            const SizedBox(height: 30),
-            _buildTitle(),
-            const SizedBox(height: 15),
-            _buildText(),
-            const Spacer(),
-            _buildButton(),
-            const SizedBox(height: 40),
-          ],
-        ),
+        child: loading ? _buildLoading() : _buildContent(),
       ),
     );
   }
