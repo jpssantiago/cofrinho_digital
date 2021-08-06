@@ -28,14 +28,39 @@ class GoalModel {
       'saved': saved,
       'months': months,
       'monthlyValue': monthlyValue,
+      'completedMonths': completedMonthsToJson(),
     };
   }
 
-  static List<int> monthsFromJson(var json) {
-    return [];
+  String completedMonthsToJson() {
+    String str = '';
+
+    for (int index in completedMonths) {
+      str += '$index,';
+    }
+
+    return str;
+  }
+
+  static List<int> completedMonthsFromJson(String str) {
+    List<int> list = [];
+
+    if (str.contains(',')) {
+      List<String> data = str.split(',');
+
+      for (String item in data) {
+        if (item != "") {
+          int value = int.parse(item);
+          list.add(int.parse(item.replaceAll(',', '')));
+        }
+      }
+    }
+
+    return list;
   }
 
   static GoalModel fromMap(Map<String, dynamic> map) {
+    // print(map['completedMonths']);
     return GoalModel(
       id: map['id'],
       title: map['title'],
@@ -43,7 +68,7 @@ class GoalModel {
       goal: map['goal'],
       saved: map['saved'],
       months: map['months'],
-      completedMonths: monthsFromJson(''),
+      completedMonths: completedMonthsFromJson(map['completedMonths']),
       monthlyValue: map['monthlyValue'],
     );
   }

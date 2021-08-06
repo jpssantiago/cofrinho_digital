@@ -52,7 +52,7 @@ class UserProvider extends ChangeNotifier {
     return goal.completedMonths.contains(index);
   }
 
-  void toggleCompletedMonth(GoalModel goal, int index) {
+  void toggleCompletedMonth(GoalModel goal, int index) async {
     if (hasCompletedMonth(goal, index)) {
       goal.completedMonths.remove(index);
       goal.saved -= goal.monthlyValue;
@@ -60,6 +60,8 @@ class UserProvider extends ChangeNotifier {
       goal.completedMonths.add(index);
       goal.saved += goal.monthlyValue;
     }
+
+    await DatabaseService.saveGoal(goal);
 
     notifyListeners();
   }

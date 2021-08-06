@@ -20,7 +20,6 @@ class MonthSection extends StatelessWidget {
       List<Widget> list = [];
 
       for (int i = 0; i < goal.months; i++) {
-        // TODO: Marcar como concluído ou não concluído os meses.
         bool completed = provider.hasCompletedMonth(goal, i);
 
         list.add(
