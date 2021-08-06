@@ -1,3 +1,4 @@
+import 'package:cofrinho_digital/utils/snackbar_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +30,13 @@ class MonthSection extends StatelessWidget {
             completed: completed,
             onTap: (int index) {
               provider.toggleCompletedMonth(goal, index);
+
+              if (goal.completedMonths.length == goal.months) {
+                SnackbarUtils.showMessage(
+                  context: context,
+                  message: 'Você completou este objetivo com sucesso!',
+                );
+              }
             },
           ),
         );

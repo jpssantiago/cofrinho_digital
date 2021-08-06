@@ -50,7 +50,6 @@ class GoalModel {
 
       for (String item in data) {
         if (item != "") {
-          int value = int.parse(item);
           list.add(int.parse(item.replaceAll(',', '')));
         }
       }
