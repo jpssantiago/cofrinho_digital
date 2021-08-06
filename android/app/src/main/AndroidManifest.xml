@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cofrinho_digital">
+    package="tech.jpssantiago.cofrinho_digital">
    <application
-        android:label="cofrinho_digital"
+        android:label="Cofrinho Digital"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

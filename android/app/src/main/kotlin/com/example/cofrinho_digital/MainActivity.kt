@@ -1,4 +1,4 @@
-package com.example.cofrinho_digital
+package tech.jpssantiago.cofrinho_digital
 
 import io.flutter.embedding.android.FlutterActivity
 
