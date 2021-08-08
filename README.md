@@ -1,31 +1,36 @@
-# Cofrinho digital
+# Cofrinho Digital
 
-App made with Flutter.
+Aplicativo de cofrinho digital feito com Flutter.
 
-## Getting started
+## Começando
 
-Clone this repo.
+Clone este repositório
 
 ```bash
 git clone https://github.com/jpssantiago/cofrinho_digital
 ```
 
-Install dependencies
+Instale as dependencias
 
 ```bash
 flutter pub get
 ```
 
-Enjoy :)
+Rode o projeto :)
 
 ```bash
 flutter run
 ```
 
-<!-- ## Images
+## Images
 
 <img src="assets/readme_images/readme_image_0.png" alt="drawing" width="200"/>
-<img src="assets/readme_images/readme_image_1.png" alt="drawing" width="200"/> -->
+<img src="assets/readme_images/readme_image_1.png" alt="drawing" width="200"/>
+<img src="assets/readme_images/readme_image_2.png" alt="drawing" width="200"/>
+<img src="assets/readme_images/readme_image_3.png" alt="drawing" width="200"/>
+<img src="assets/readme_images/readme_image_4.png" alt="drawing" width="200"/>
+<img src="assets/readme_images/readme_image_5.png" alt="drawing" width="200"/>
+<img src="assets/readme_images/readme_image_6.png" alt="drawing" width="200"/>
 
 ## License
 [MIT](LICENSE)
