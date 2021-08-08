@@ -24,13 +24,13 @@ flutter run
 
 ## Images
 
-<img src="assets/readme_images/readme_image_0.png" alt="drawing" width="200"/>
-<img src="assets/readme_images/readme_image_1.png" alt="drawing" width="200"/>
-<img src="assets/readme_images/readme_image_2.png" alt="drawing" width="200"/>
-<img src="assets/readme_images/readme_image_3.png" alt="drawing" width="200"/>
-<img src="assets/readme_images/readme_image_4.png" alt="drawing" width="200"/>
-<img src="assets/readme_images/readme_image_5.png" alt="drawing" width="200"/>
-<img src="assets/readme_images/readme_image_6.png" alt="drawing" width="200"/>
+<img src="assets/readme_images/readme_image_0.png" alt="drawing" width="150"/>
+<img src="assets/readme_images/readme_image_1.png" alt="drawing" width="150"/>
+<img src="assets/readme_images/readme_image_2.png" alt="drawing" width="150"/>
+<img src="assets/readme_images/readme_image_3.png" alt="drawing" width="150"/>
+<img src="assets/readme_images/readme_image_4.png" alt="drawing" width="150"/>
+<img src="assets/readme_images/readme_image_5.png" alt="drawing" width="150"/>
+<img src="assets/readme_images/readme_image_6.png" alt="drawing" width="150"/>
 
 ## License
 [MIT](LICENSE)
