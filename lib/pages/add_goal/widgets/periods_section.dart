@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MonthsSection extends StatelessWidget {
+class PeriodSection extends StatelessWidget {
   final Function(int) onSubmit;
   final int value;
 
-  const MonthsSection({
+  const PeriodSection({
     Key? key,
     required this.onSubmit,
     required this.value,
@@ -33,7 +33,7 @@ class MonthsSection extends StatelessWidget {
 
 Widget _buildTitle() {
   return const Text(
-    'Número de meses',
+    'Número de %period%',
     style: TextStyle(
       fontSize: 14,
       color: Color(0xFF525252),

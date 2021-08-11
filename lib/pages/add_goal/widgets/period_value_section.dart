@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:extended_masked_text/extended_masked_text.dart';
 
-class MonthlyValueSection extends StatelessWidget {
+class PeriodValueSection extends StatelessWidget {
   final Function(double) onSubmit;
   final double value;
 
-  const MonthlyValueSection({
+  const PeriodValueSection({
     Key? key,
     required this.onSubmit,
     required this.value,
@@ -37,7 +37,7 @@ class MonthlyValueSection extends StatelessWidget {
 
 Widget _buildTitle() {
   return const Text(
-    'Contribuição mensal',
+    'Contribuição %period%',
     style: TextStyle(
       fontSize: 14,
       color: Color(0xFF525252),

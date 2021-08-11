@@ -20,18 +20,18 @@ class MonthSection extends StatelessWidget {
     List<Widget> _buildChildren(UserProvider provider) {
       List<Widget> list = [];
 
-      for (int i = 0; i < goal.months; i++) {
-        bool completed = provider.hasCompletedMonth(goal, i);
+      for (int i = 0; i < goal.periods; i++) {
+        bool completed = provider.hasCompletedPeriod(goal, i);
 
         list.add(
           MonthItem(
             index: i,
-            value: goal.monthlyValue,
+            value: goal.periodValue,
             completed: completed,
             onTap: (int index) {
-              provider.toggleCompletedMonth(goal, index);
+              provider.toggleCompletedPeriod(goal, index);
 
-              if (goal.completedMonths.length == goal.months) {
+              if (goal.completedPeriods.length == goal.periods) {
                 SnackbarUtils.showMessage(
                   context: context,
                   message: 'Você completou este objetivo com sucesso!',

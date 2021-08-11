@@ -1,15 +1,15 @@
-import 'package:cofrinho_digital/models/goal_category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 import '/widgets/custom_app_bar.dart';
 import 'widgets/goal_value_section.dart';
-import 'widgets/monthly_value_section.dart';
-import 'widgets/months_section.dart';
+import 'widgets/period_value_section.dart';
+import 'widgets/periods_section.dart';
 import '/providers/user_provider.dart';
 import '/utils/snackbar_utils.dart';
 import '/models/goal_model.dart';
+import '/models/goal_category_model.dart';
 
 class GoalDetailsPage extends StatefulWidget {
   const GoalDetailsPage({Key? key}) : super(key: key);
@@ -19,10 +19,11 @@ class GoalDetailsPage extends StatefulWidget {
 }
 
 class _GoalDetailsPageState extends State<GoalDetailsPage> {
+  // TODO: Adicionar opção de escolher dias ou semanas (não só meses).
   double goalValue = 0;
-  int months =
-      0; // TODO: Adicionar opção de escolher dias ou semanas (não só meses).
-  double monthlyValue = 0;
+  int periods = 0;
+  String periodType = 'months';
+  double periodValue = 0;
   bool loading = false;
 
   @override
@@ -35,28 +36,28 @@ class _GoalDetailsPageState extends State<GoalDetailsPage> {
       setState(() {
         goalValue = value;
 
-        if (months > 0) {
-          monthlyValue = goalValue / months;
+        if (periods > 0) {
+          periodValue = goalValue / periods;
         }
       });
     }
 
     void handleMonthsChange(int value) {
       setState(() {
-        months = value;
+        periods = value;
 
         if (goalValue > 0) {
-          monthlyValue = goalValue / months;
+          periodValue = goalValue / periods;
         }
       });
     }
 
-    void handleMonthlyValueChange(double value) {
+    void handleperiodValueChange(double value) {
       setState(() {
-        monthlyValue = value;
+        periodValue = value;
 
-        if (months > 0) {
-          goalValue = monthlyValue * months;
+        if (periods > 0) {
+          goalValue = periodValue * periods;
         }
       });
     }
@@ -70,7 +71,7 @@ class _GoalDetailsPageState extends State<GoalDetailsPage> {
     void handleSubmit() async {
       if (loading) return;
 
-      if (goalValue < 1 || months < 1 || monthlyValue < 1) {
+      if (goalValue < 1 || periods < 1 || periodValue < 1) {
         SnackbarUtils.showMessage(
           context: context,
           message: 'Preencha os campos para continuar.',
@@ -87,9 +88,10 @@ class _GoalDetailsPageState extends State<GoalDetailsPage> {
           emoji: category.emoji,
           goal: goalValue,
           saved: 0,
-          months: months,
-          completedMonths: [],
-          monthlyValue: monthlyValue,
+          periods: periods,
+          periodType: periodType,
+          completedPeriods: [],
+          periodValue: periodValue,
         ),
       );
 
@@ -123,14 +125,14 @@ class _GoalDetailsPageState extends State<GoalDetailsPage> {
                     onSubmit: handleGoalValueChange,
                   ),
                   const SizedBox(height: 30),
-                  MonthsSection(
-                    value: months,
+                  PeriodSection(
+                    value: periods,
                     onSubmit: handleMonthsChange,
                   ),
                   const SizedBox(height: 30),
-                  MonthlyValueSection(
-                    value: monthlyValue,
-                    onSubmit: handleMonthlyValueChange,
+                  PeriodValueSection(
+                    value: periodValue,
+                    onSubmit: handleperiodValueChange,
                   ),
                 ],
               ),

@@ -48,17 +48,17 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool hasCompletedMonth(GoalModel goal, int index) {
-    return goal.completedMonths.contains(index);
+  bool hasCompletedPeriod(GoalModel goal, int index) {
+    return goal.completedPeriods.contains(index);
   }
 
-  void toggleCompletedMonth(GoalModel goal, int index) async {
-    if (hasCompletedMonth(goal, index)) {
-      goal.completedMonths.remove(index);
-      goal.saved -= goal.monthlyValue;
+  void toggleCompletedPeriod(GoalModel goal, int index) async {
+    if (hasCompletedPeriod(goal, index)) {
+      goal.completedPeriods.remove(index);
+      goal.saved -= goal.periodValue;
     } else {
-      goal.completedMonths.add(index);
-      goal.saved += goal.monthlyValue;
+      goal.completedPeriods.add(index);
+      goal.saved += goal.periodValue;
     }
 
     await DatabaseService.saveGoal(goal);

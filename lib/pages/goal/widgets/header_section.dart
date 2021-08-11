@@ -82,9 +82,9 @@ class HeaderSection extends StatelessWidget {
     }
 
     Widget _buildDescription() {
-      int remainingMonths = goal.months - goal.completedMonths.length;
+      int remainingMonths = goal.periods - goal.completedPeriods.length;
       String defaultText =
-          '$remainingMonths meses restantes - ${MoneyUtils.formatMoney(goal.monthlyValue)} por mês';
+          '$remainingMonths meses restantes - ${MoneyUtils.formatMoney(goal.periodValue)} por %period%';
       String completedText = 'Parabéns, você completou este objetivo!';
 
       return Padding(

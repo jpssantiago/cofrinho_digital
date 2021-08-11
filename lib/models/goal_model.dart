@@ -4,9 +4,10 @@ class GoalModel {
   String emoji;
   double goal;
   double saved;
-  int months;
-  List<int> completedMonths;
-  double monthlyValue;
+  int periods;
+  String periodType;
+  List<int> completedPeriods;
+  double periodValue;
 
   GoalModel({
     required this.id,
@@ -14,9 +15,10 @@ class GoalModel {
     required this.emoji,
     required this.goal,
     required this.saved,
-    required this.months,
-    required this.completedMonths,
-    required this.monthlyValue,
+    required this.periods,
+    required this.periodType,
+    required this.completedPeriods,
+    required this.periodValue,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,8 +28,9 @@ class GoalModel {
       'emoji': emoji,
       'goal': goal,
       'saved': saved,
-      'months': months,
-      'monthlyValue': monthlyValue,
+      'periods': periods,
+      'periodType': periodType,
+      'periodValue': periodValue,
       'completedMonths': completedMonthsToJson(),
     };
   }
@@ -35,7 +38,7 @@ class GoalModel {
   String completedMonthsToJson() {
     String str = '';
 
-    for (int index in completedMonths) {
+    for (int index in completedPeriods) {
       str += '$index,';
     }
 
@@ -59,16 +62,16 @@ class GoalModel {
   }
 
   static GoalModel fromMap(Map<String, dynamic> map) {
-    // print(map['completedMonths']);
     return GoalModel(
       id: map['id'],
       title: map['title'],
       emoji: map['emoji'],
       goal: map['goal'],
       saved: map['saved'],
-      months: map['months'],
-      completedMonths: completedMonthsFromJson(map['completedMonths']),
-      monthlyValue: map['monthlyValue'],
+      periods: map['periods'],
+      periodType: map['periodType'],
+      completedPeriods: completedMonthsFromJson(map['completedMonths']),
+      periodValue: map['periodValue'],
     );
   }
 }

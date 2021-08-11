@@ -15,7 +15,7 @@ class DatabaseService {
           'CREATE TABLE users(name TEXT PRIMARY KEY)',
         );
         db.execute(
-          'CREATE TABLE goals(id TEXT PRIMARY KEY, title TEXT, emoji TEXT, goal REAL, saved REAL, months INTEGER, completedMonths TEXT, monthlyValue REAL)',
+          'CREATE TABLE goals(id TEXT PRIMARY KEY, title TEXT, emoji TEXT, goal REAL, saved REAL, periods INTEGER, periodType TEXT, completedPeriods TEXT, periodValue REAL)',
         );
         return;
       },
