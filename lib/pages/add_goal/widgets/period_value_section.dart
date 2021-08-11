@@ -4,11 +4,13 @@ import 'package:extended_masked_text/extended_masked_text.dart';
 class PeriodValueSection extends StatelessWidget {
   final Function(double) onSubmit;
   final double value;
+  final String periodType;
 
   const PeriodValueSection({
     Key? key,
     required this.onSubmit,
     required this.value,
+    required this.periodType,
   }) : super(key: key);
 
   @override
@@ -21,7 +23,7 @@ class PeriodValueSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildTitle(),
+        _buildTitle(periodType),
         _buildTextField(
           controller: controller,
           context: context,
@@ -35,10 +37,20 @@ class PeriodValueSection extends StatelessWidget {
   }
 }
 
-Widget _buildTitle() {
-  return const Text(
-    'Contribuição %period%',
-    style: TextStyle(
+Widget _buildTitle(String periodType) {
+  String getPeriod() {
+    if (periodType == 'days') {
+      return 'diária';
+    } else if (periodType == 'weeks') {
+      return 'semanal';
+    }
+
+    return 'mensal';
+  }
+
+  return Text(
+    'Contribuição ${getPeriod()}',
+    style: const TextStyle(
       fontSize: 14,
       color: Color(0xFF525252),
     ),

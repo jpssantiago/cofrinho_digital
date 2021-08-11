@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class PeriodSection extends StatelessWidget {
   final Function(int) onSubmit;
   final int value;
+  final String periodType;
 
   const PeriodSection({
     Key? key,
     required this.onSubmit,
     required this.value,
+    required this.periodType,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class PeriodSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildTitle(),
+        _buildTitle(periodType),
         _buildTextField(
           controller: controller,
           context: context,
@@ -31,10 +33,20 @@ class PeriodSection extends StatelessWidget {
   }
 }
 
-Widget _buildTitle() {
-  return const Text(
-    'Número de %period%',
-    style: TextStyle(
+Widget _buildTitle(String periodType) {
+  String getPeriod() {
+    if (periodType == 'days') {
+      return 'dias';
+    } else if (periodType == 'weeks') {
+      return 'semanas';
+    }
+
+    return 'meses';
+  }
+
+  return Text(
+    'Número de ${getPeriod()}',
+    style: const TextStyle(
       fontSize: 14,
       color: Color(0xFF525252),
     ),

@@ -1,3 +1,4 @@
+import 'package:cofrinho_digital/pages/add_goal/widgets/period_selector_section.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
@@ -128,11 +129,22 @@ class _GoalDetailsPageState extends State<GoalDetailsPage> {
                   PeriodSection(
                     value: periods,
                     onSubmit: handleMonthsChange,
+                    periodType: periodType,
                   ),
                   const SizedBox(height: 30),
                   PeriodValueSection(
                     value: periodValue,
                     onSubmit: handleperiodValueChange,
+                    periodType: periodType,
+                  ),
+                  const SizedBox(height: 30),
+                  PeriodSelectorSection(
+                    selectedPeriodType: periodType,
+                    onSelectPeriodType: (String value) {
+                      setState(() {
+                        periodType = value;
+                      });
+                    },
                   ),
                 ],
               ),
