@@ -82,15 +82,35 @@ class HeaderSection extends StatelessWidget {
     }
 
     Widget _buildDescription() {
-      int remainingMonths = goal.periods - goal.completedPeriods.length;
+      String getPeriodPlural() {
+        if (goal.periodType == 'days') {
+          return 'dias';
+        } else if (goal.periodType == 'weeks') {
+          return 'semanas';
+        }
+
+        return 'meses';
+      }
+
+      String getPeriodSingular() {
+        if (goal.periodType == 'days') {
+          return 'dia';
+        } else if (goal.periodType == 'weeks') {
+          return 'semana';
+        }
+
+        return 'mês';
+      }
+
+      int remainingPeriods = goal.periods - goal.completedPeriods.length;
       String defaultText =
-          '$remainingMonths meses restantes - ${MoneyUtils.formatMoney(goal.periodValue)} por %period%';
+          '$remainingPeriods ${getPeriodPlural()} restantes - ${MoneyUtils.formatMoney(goal.periodValue)} por ${getPeriodSingular()}';
       String completedText = 'Parabéns, você completou este objetivo!';
 
       return Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Text(
-          remainingMonths == 0 ? completedText : defaultText,
+          remainingPeriods == 0 ? completedText : defaultText,
           style: const TextStyle(
             fontSize: 16,
             color: Color(0xFF525252),

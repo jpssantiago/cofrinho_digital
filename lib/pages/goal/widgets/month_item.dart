@@ -7,6 +7,7 @@ class MonthItem extends StatelessWidget {
   final double value;
   final bool completed;
   final Function(int) onTap;
+  final String periodName;
 
   const MonthItem({
     Key? key,
@@ -14,6 +15,7 @@ class MonthItem extends StatelessWidget {
     required this.value,
     required this.completed,
     required this.onTap,
+    required this.periodName,
   }) : super(key: key);
 
   @override
@@ -57,7 +59,7 @@ class MonthItem extends StatelessWidget {
 
     return ListTile(
       leading: _buildLeading(),
-      title: Text('Mês ${index + 1}'),
+      title: Text('$periodName ${index + 1}'),
       trailing: _buildTrailing(),
       onTap: () => onTap(index),
     );

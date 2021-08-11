@@ -31,11 +31,11 @@ class GoalModel {
       'periods': periods,
       'periodType': periodType,
       'periodValue': periodValue,
-      'completedMonths': completedMonthsToJson(),
+      'completedPeriods': completedPeriodsToJson(),
     };
   }
 
-  String completedMonthsToJson() {
+  String completedPeriodsToJson() {
     String str = '';
 
     for (int index in completedPeriods) {
@@ -70,7 +70,7 @@ class GoalModel {
       saved: map['saved'],
       periods: map['periods'],
       periodType: map['periodType'],
-      completedPeriods: completedMonthsFromJson(map['completedMonths']),
+      completedPeriods: completedMonthsFromJson(map['completedPeriods']),
       periodValue: map['periodValue'],
     );
   }

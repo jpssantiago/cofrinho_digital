@@ -87,7 +87,7 @@ class DatabaseService {
       'goals',
       {
         'saved': goal.saved,
-        'completedMonths': goal.completedMonthsToJson(),
+        'completedPeriods': goal.completedPeriodsToJson(),
       },
       where: 'id = ?',
       whereArgs: [goal.id],

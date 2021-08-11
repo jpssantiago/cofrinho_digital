@@ -22,12 +22,22 @@ class MonthSection extends StatelessWidget {
 
       for (int i = 0; i < goal.periods; i++) {
         bool completed = provider.hasCompletedPeriod(goal, i);
+        String periodName = '';
+
+        if (goal.periodType == 'months') {
+          periodName = 'Mês';
+        } else if (goal.periodType == 'weeks') {
+          periodName = 'Semana';
+        } else {
+          periodName = 'Dia';
+        }
 
         list.add(
           MonthItem(
             index: i,
             value: goal.periodValue,
             completed: completed,
+            periodName: periodName,
             onTap: (int index) {
               provider.toggleCompletedPeriod(goal, index);
 
