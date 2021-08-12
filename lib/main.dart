@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'providers/user_provider.dart';
 import 'services/database_service.dart';
@@ -24,6 +25,8 @@ void main() async {
   ]);
 
   await DatabaseService.startDatabase();
+
+  MobileAds.instance.initialize();
 
   runApp(const MyApp());
 }
