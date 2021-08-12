@@ -12,7 +12,7 @@ final List<Map<String, String>> options = [
   {
     'displayName': 'Diário',
     'name': 'days',
-  }
+  },
 ];
 
 class PeriodSelectorSection extends StatelessWidget {
@@ -96,8 +96,12 @@ class PeriodSelectorSection extends StatelessWidget {
         children: [
           _buildTitle(),
           const SizedBox(height: 20),
-          Row(
-            children: _buildChildren(),
+          SizedBox(
+            height: 36,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: _buildChildren(),
+            ),
           )
         ],
       ),
