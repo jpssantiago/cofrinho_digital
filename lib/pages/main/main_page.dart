@@ -36,8 +36,6 @@ class _MainPageState extends State<MainPage> {
   void initializeBanner() async {
     await myBanner.load();
     setBannerLoaded(true);
-    print('Resposta:');
-    print(myBanner.responseInfo);
   }
 
   @override
@@ -60,13 +58,13 @@ class _MainPageState extends State<MainPage> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(5),
-            boxShadow: [
-              BoxShadow(
-                offset: const Offset(0, 4),
-                blurRadius: 4,
-                color: Colors.black.withOpacity(.25),
-              ),
-            ],
+            // boxShadow: [
+            //   BoxShadow(
+            //     offset: const Offset(0, 4),
+            //     blurRadius: 4,
+            //     color: Colors.black.withOpacity(.25),
+            //   ),
+            // ],
           ),
           child: AdWidget(ad: myBanner),
         ),
